@@ -11,12 +11,12 @@ import { Session, User } from '@supabase/supabase-js'
 type AuthContext = {
   session: Session | null
   profile: any | null
-  // user: User | null
+  user: User | null
 }
 
 const AuthContext = createContext<AuthContext>({
   session: null,
-  // user: null,
+  user: null,
   profile: null,
 })
 
@@ -55,7 +55,7 @@ export default function AuthProvider({ children }: PropsWithChildren) {
   }, [session?.user])
 
   return (
-    <AuthContext.Provider value={{ session, profile }}>
+    <AuthContext.Provider value={{ session, profile, user: session?.user }}>
       {children}
     </AuthContext.Provider>
   )

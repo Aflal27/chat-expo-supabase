@@ -1,35 +1,30 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Link, Redirect, Stack, router } from 'expo-router'
 import { ChannelList } from 'stream-chat-expo'
-import { Link, router, Stack } from 'expo-router'
-import { useAuth } from '@/src/providers/authProvider'
-import { FontAwesome } from '@expo/vector-icons'
+import { useAuth } from '../../../providers/authProvider'
+import { FontAwesome5 } from '@expo/vector-icons'
 
-const MainTabScreen = () => {
-  const { session } = useAuth()
+export default function MainTabScreen() {
+  const { user } = useAuth()
   return (
-    <View>
+    <>
       <Stack.Screen
         options={{
           headerRight: () => (
             <Link href={'/(home)/users'} asChild>
-              <FontAwesome
+              <FontAwesome5
                 name='users'
-                size={24}
+                size={22}
                 color='gray'
-                style={{ marginRight: 10 }}
+                style={{ marginHorizontal: 15 }}
               />
             </Link>
           ),
         }}
       />
       <ChannelList
-        filters={{ members: { $in: [session.user?.id] } }}
+        filters={{ members: { $in: [user.id] } }}
         onSelect={(channel) => router.push(`/channel/${channel.cid}`)}
       />
-    </View>
+    </>
   )
 }
-
-export default MainTabScreen
-
-const styles = StyleSheet.create({})
