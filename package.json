@@ -47,7 +47,12 @@
     "react-native-web": "~0.19.13",
     "react-native-webview": "13.12.5",
     "stream-chat-expo": "^6.4.0",
-    "expo-image-picker": "~16.0.4"
+    "expo-image-picker": "~16.0.4",
+    "expo-av": "~15.0.2",
+    "expo-media-library": "~17.0.5",
+    "expo-document-picker": "~13.0.2",
+    "expo-clipboard": "~7.0.1",
+    "expo-sharing": "~13.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
